@@ -13,6 +13,9 @@ import { UserService } from './user.service';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { User } from './user.entity';
 import { UpdateUserDto } from './dtos/update-user.dto';
+import { Serialize } from '../decorators/serialize.decorator';
+import { UserDto } from './dtos/user.dto';
+import { Public } from '../decorators/public.decorator';
 
 @Controller('auth')
 export class UserController {
@@ -23,6 +26,7 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
+  @Serialize(UserDto)
   @Get()
   findAllUsers(@Query('email') email: string): Promise<User[]> {
     return this.userService.find(email);
@@ -41,6 +45,7 @@ export class UserController {
     return this.userService.update(id, updateUserDto);
   }
 
+  @Public()
   @Delete(':id')
   remove(@Param('id', ParseIntPipe) id: number): Promise<User> {
     return this.userService.remove(id);
