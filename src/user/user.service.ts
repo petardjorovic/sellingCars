@@ -11,7 +11,10 @@ export class UserService {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
 
-  findById(id: number): Promise<User | null> {
+  async findById(id: number): Promise<User | null> {
+    if (!id) {
+      throw new NotFoundException();
+    }
     return this.userRepository.findOneBy({ id });
   }
 

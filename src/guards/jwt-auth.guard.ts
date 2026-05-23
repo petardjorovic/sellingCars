@@ -6,8 +6,7 @@ import {
 } from '@nestjs/common';
 import { Reflector } from '@nestjs/core';
 import { IS_PUBLIC_KEY } from '../decorators/public.decorator';
-import { Request } from 'express';
-import { RequestWithUser, Role } from './roles.guard';
+import { RequestWithUser } from '../user/interceptors/current-user.interceptor';
 
 @Injectable()
 export class JwtAuthGuard implements CanActivate {
@@ -32,10 +31,6 @@ export class JwtAuthGuard implements CanActivate {
 
     //* verify token
     //* request.user = payload
-    request.user = {
-      id: 15,
-      role: Role.USER,
-    };
 
     return true;
   }
