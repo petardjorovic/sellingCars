@@ -21,19 +21,17 @@ Content-Type: application/json
 ### Get the currently signed in user
 GET http://localhost:3000/auth/whoami
 
-### Get 
-GET http://localhost:3000/auth/the/55
-
 
 ### Sign Out a user
 GET http://localhost:3000/auth/signout
+
 
 ### Find all users
 GET http://localhost:3000/auth
 
 
 ### Find a user by id
-GET http://localhost:3000/auth/1
+GET http://localhost:3000/auth/125
 
 
 ### Update an user
