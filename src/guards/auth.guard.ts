@@ -1,7 +1,7 @@
 import { CanActivate, ExecutionContext, Injectable } from '@nestjs/common';
-import { RequestWithUser } from '../user/interceptors/current-user.interceptor';
 import { Reflector } from '@nestjs/core';
 import { IS_PUBLIC_KEY } from '../decorators/public.decorator';
+import { Request } from 'express';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
@@ -15,7 +15,7 @@ export class AuthGuard implements CanActivate {
 
     if (isPublic) return true;
 
-    const request = context.switchToHttp().getRequest<RequestWithUser>();
+    const request = context.switchToHttp().getRequest<Request>();
 
     if (request.session?.userId) {
       return true;
