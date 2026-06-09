@@ -1,0 +1,13 @@
+### Create report
+POST http://localhost:3000/report
+Content-Type: application/json
+
+{
+    "make": "Citroen",
+    "model": "c4",
+    "year": 2011,
+    "mileage": 196000,
+    "lng": 0,
+    "lat": 0,
+    "price": 5500
+}
