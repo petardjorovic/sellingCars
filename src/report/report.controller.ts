@@ -21,6 +21,7 @@ import { ReportDto } from './dtos/report.dto';
 import { ApproveReportDto } from './dtos/approve-report.dto';
 import { GetEstimateDto } from './dtos/get-estimate.dto';
 
+@UseGuards(AuthGuard)
 @Controller('report')
 export class ReportController {
   constructor(private readonly reportService: ReportService) {}
@@ -30,7 +31,6 @@ export class ReportController {
     return this.reportService.estimateReport(query);
   }
 
-  @UseGuards(AuthGuard)
   @Serialize(ReportDto)
   @Post()
   createReport(
